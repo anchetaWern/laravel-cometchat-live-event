@@ -1,33 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Events</title>
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-4 mt-5">
-                <h4 class="text-center">Events</h4>
+@extends('layouts.app')
 
-                <div class="list-group">
-                    @foreach ($events as $event)
-                    <a href="/event/{{ $event->cometchat_group_id }}" class="list-group-item list-group-item-action flex-column align-items-start">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h5 class="mb-1">{{ $event->title }}</h5>
-                            <small>{{ $event->created_at }}</small>
+@section('title')
+<title>Events</title>
+@endsection
+
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5 mt-5">
+            <h4 class="text-center">Events</h4>
+
+            <div class="list-group">
+                @foreach ($events as $event)
+                <a href="/event/{{ $event->cometchat_group_id }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="d-flex justify-content-between">
+                        <div>
+                            <img src="{{ youtubeThumbnail($event->youtube_url) }}" alt="{{ $event->title }}">
                         </div>
-                        <p class="mb-1">
-                            {{ $event->description }}
-                        </p>
-                    </a>
-                    @endforeach
-                </div>
+                        <div class="w-100 p-2">
+                            <h5 class="mb-1">{{ $event->title }}</h5>
 
+                            <p class="mb-1">
+                            {{ $event->description }}
+                            </p>
+                        </div>
+
+                        <div class="w-50 text-right">
+                            <small>{{ humanDateDiff($event->created_at) }}</small>
+                        </div>
+
+                    </div>
+                </a>
+                @endforeach
             </div>
+
         </div>
     </div>
-</body>
-</html>
+</div>
+@endsection

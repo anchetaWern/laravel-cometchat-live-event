@@ -37,8 +37,8 @@ class RegisterController extends Controller
 
             User::create(array_merge($request->validated(), ['cometchat_user_id' => $cometchat_user_id]));
 
-            return back()
-                ->with('alert', ['type' => 'success', 'text' => "You are now registered!"]);
+            return redirect('/login')
+                ->with('alert', ['type' => 'success', 'text' => "You are now registered! You can now login."]);
 
         } catch (\Exception $e) {
             return back()

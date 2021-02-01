@@ -32,8 +32,10 @@ Route::post('/events/create', [EventsManagementController::class, 'create']);
 Route::get('/register', [RegisterController::class, 'index']);
 Route::post('/register', [RegisterController::class, 'create']);
 
-Route::get('/login', [LoginController::class, 'index']);
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 Route::post('/login', [LoginController::class, 'login']);
 
-Route::get('/events', [EventsController::class, 'index']);
-Route::get('/event/{id}', [EventsController::class, 'detail']);
+Route::middleware(['auth'])->group(function () {
+    Route::get('/events', [EventsController::class, 'index']);
+    Route::get('/event/{id}', [EventsController::class, 'detail']);
+});

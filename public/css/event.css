@@ -1,0 +1,47 @@
+.video-info-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-bottom: 1px solid #ececec;
+    padding: 10px 0;
+}
+
+.video-actions {
+    display: flex;
+    flex-direction: row;
+}
+
+.action-item {
+    padding: 0 10px;
+    align-self: flex-end;
+}
+
+.sub-text {
+    color: #909090;
+}
+
+.subscription-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    padding: 10px 0;
+}
+
+.icon-container .fab {
+    font-size: 45px;
+}
+
+.account-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.small-text {
+    font-size: 12px;
+}
+
+.icon-container {
+    padding-right: 10px;
+    color: #e43d32;
+}
